@@ -79,9 +79,9 @@ def get_stars_forks():
             (_, repo_uri), (_, name) = repo_obj.items()
 
             repo_url = GITHUB_URL + "repos/" + repo_uri
+            print(repo_url)
             repo = requests.get(repo_url, headers=headers)
             repo = repo.json()
-            logging.DEBUG(repo)
 
             star_count.append([name, repo["stargazers_count"]])
             fork_count.append([name, repo["forks_count"]])
