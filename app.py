@@ -25,6 +25,7 @@ from dateutil import *
 from datetime import date
 import pandas as pd
 import requests
+import logging
 
 # Initilize flask app
 app = Flask(__name__)
@@ -80,6 +81,8 @@ def get_stars_forks():
             repo_url = GITHUB_URL + "repos/" + repo_uri
             repo = requests.get(repo_url, headers=headers)
             repo = repo.json()
+            logging.DEBUG(repo)
+
             star_count.append([name, repo["stargazers_count"]])
             fork_count.append([name, repo["forks_count"]])
             issue_count.append([name, repo["open_issues_count"]])
